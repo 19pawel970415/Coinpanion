@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In Coinpanion</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form class="form-registration" method="post" action="process_registration.php">
+        <label class="form-login-label">IMIĘ</label><br>
+        <input type="text" class="reg-name login-input" name="imie" required><br>
+        <label class="form-login-label">NAZWISKO</label><br>
+        <input type="text" class="reg-surname login-input" name="nazwisko" required><br>
+        <label class="form-login-label">EMAIL</label><br>
+        <input type="email" class="reg-email login-input" name="email" required><br>
+        <label class="form-login-label">LOGIN</label><br>
+        <input type="text" class="profile-email login-input" name="login" required><br>
+        <label class="form-login-label">HASŁO</label><br>
+        <input type="password" class="reg-password login-input" name="haslo" required><br>
+        <label class="form-login-label">POWTÓRZ HASŁO</label><br>
+        <input type="password" class="reg-password2 login-input" name="haslo_powtorz" required><br>
+        <input type="submit" class="button-primary button-registration" value="ZAREJESTRUJ">
+    </form>
+    <footer>Coinpanion©</footer>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Coinpanion</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form class="form-login" method="post" action="process_login.php">
+        <label class="form-login-label">LOGIN</label><br>
+        <input type="text" class="login-user login-input" name="login" required><br>
+        <label class="form-login-label">HASŁO</label><br>
+        <input type="password" class="login-password login-input" name="haslo" required><br>
+        <input type="submit" class="button-primary button-login" value="ZALOGUJ">
+        <input type="hidden" name="action" value="login">
+    </form>
+    <footer>Coinpanion©</footer>
+</body>
+</html>
