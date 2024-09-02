@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 ```
 
-### process_login.php
+### `process_login.php`
 
 Handles user login by checking the provided username and password, verifying the password, and redirecting users upon successful login. It also includes an alert function for error messages.
 
@@ -100,7 +100,7 @@ function function_alert($message) {
 ?>
 ```
 
-### main.php
+### `main.php`
 
 Displays user information if logged in, or redirects to the main page if not authorized.
 
@@ -119,7 +119,7 @@ if (isset($_SESSION["user_id"])) {
 ?>
 ```
 
-### process_edit_profile.php
+### `process_edit_profile.php`
 
 Handles profile updates, including updating user details and handling password changes.
 
@@ -173,7 +173,7 @@ if ($result->num_rows > 0) {
 ?>
 ```
 
-### generate_report.php
+### `generate_report.php`
 
 Generates an expense report based on user-selected parameters such as date and category.
 
@@ -234,7 +234,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 ?>
 ```
 
-### logout.php
+### `logout.php`
 
 Handles user logout by clearing session data and destroying the session.
 
@@ -246,7 +246,7 @@ session_destroy();
 ?>
 ```
 
-### table.php
+### `table.php`
 
 Displays user expenses with filtering and allows editing and deleting of expenses.
 
@@ -308,7 +308,7 @@ if ($result->num_rows > 0) {
 ?>
 ```
 
-### save_expense.php
+### `save_expense.php`
 
 Saves a new expense into the database.
 
@@ -327,7 +327,7 @@ function saveExpense($conn, $date, $category, $expenseName, $amount, $userId) {
 ?>
 ```
 
-### edit_expense.php
+### `edit_expense.php`
 
 Edits an existing expense in the database.
 
@@ -346,7 +346,7 @@ function editExpense($conn, $editedDate, $editedCategory, $editedExpenseName, $e
 ?>
 ```
 
-### delete_expense.php
+### `delete_expense.php`
 
 Deletes an existing expense from the database.
 
@@ -365,25 +365,25 @@ function deleteExpense($conn, $expenseId) {
 ?>
 ```
 
-## Setup Instructions
+## `Setup Instructions`
 
-### Database Configuration:
+### `Database Configuration:`
 
 Create a MySQL database and import the necessary tables (e.g., users, expenses).
 Update the database credentials in the PHP files as needed.
 
-### Deploy the Application:
+### `Deploy the Application:`
 
 Place all PHP files in the web server's root directory.
 Ensure your web server supports PHP and is correctly configured.
 
-### Testing:
+### `Testing:`
 
 Register a new user via registration.html.
 Log in via login.html and test user functionality.
 Access main.php to manage expenses and generate reports.
 
-### License
+### `License`
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
