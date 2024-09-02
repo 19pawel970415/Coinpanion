@@ -2,7 +2,59 @@
 
 # Coinpanion - personal budgeting system
 
-## Overview
+## User Guide
+
+![416023103_389005050310286_5319686253198355794_n](https://github.com/user-attachments/assets/d53205fc-2b9b-4587-b357-1e81a63584b3)
+
+## User Guide
+
+![416023103_389005050310286_5319686253198355794_n](https://github.com/user-attachments/assets/d53205fc-2b9b-4587-b357-1e81a63584b3)
+
+### 1. Registration:
+To start using Coinpanion, the first step is to create an account.
+On the homepage (index.html), click the "SIGN UP" button.
+You will be redirected to the registration page (registration.html), where you will enter your basic information such as first name, last name, email, username, and password.
+After filling out the form, click "REGISTER".
+If the form is filled out correctly and you are successfully registered in our database, you will be redirected to the welcome page (welcome.html). You can now return to the homepage using the "HOME" button and proceed to log in.
+
+### 2. Login:
+Once you have an account with Coinpanion, you can log in.
+On the homepage (index.html), click the "LOGIN" button.
+You will be redirected to the login page (login.html), where you will enter your username and password.
+After entering your details, click the "LOGIN" button.
+If the username and password are correct, you will be redirected to the Menu (menu.php).
+
+### 3. Menu (main.php):
+In the menu, you will find tiles that allow you to navigate through the Coinpanion app.
+- **Expenses:** Page where you can find all your expenses and add new ones.
+- **Profile:** Page where you can edit your account information.
+- **Reports:** Page that allows you to generate reports based on your expenses.
+- **Logout:** Button that will log you out.
+On each page, you will find a return button – a black arrow icon that will take you back to the Menu.
+
+### 4. Expenses (table.php):
+On this page, you can add new expenses, edit and delete existing ones, and search for transactions by: category, date, description, amount.
+
+#### 4.a Adding an Expense
+To add a new transaction, click the "NEW EXPENSE" button. A small form will appear with fields for date, category, description, and amount. Fill out the fields and then click the "Add" button.
+The expense has been added to your list.
+
+#### 4.b Editing an Expense
+If you want to make changes to a transaction, click the pen icon in the row of that expense. You can now update the information in the form. To confirm changes, click "Save Changes."
+
+#### 4.c Deleting an Expense
+To remove a transaction from your list, click the trash can icon in the row of the expense. A message will pop up asking if you are sure you want to delete it. Click "OK" if you want to delete the transaction; otherwise, click "Cancel."
+
+#### 4.d Searching for an Expense
+If you want to find a specific transaction, you can use our search function. Fill out one of the fields (category, date, description, amount) and click the "Search" button.
+
+### 5. Profile (profile.php)
+On this page, you can edit your account details. Fill out the fields and then click "EDIT" to confirm the changes. If you do not want to make any changes, use the return button.
+
+### 6. Reports (report.php)
+On this page, you have the option to generate reports based on your expenses. To do this, select the period for which the report should be generated. From the list of categories, check the ones you are interested in and click "Add to Report." If everything is correct, click "Generate Report." You will be redirected to the completed report.
+
+## Technical Overview
 
 This project is a simple expenses management system that includes user registration, login, profile management, and expenses tracking. Users can register, log in, update their profiles, generate expenses reports, and manage their expenses.
 
