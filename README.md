@@ -1,4 +1,4 @@
-### A fully documented project of Coinpanion - an app for personal budgeting being a part of the University of Lodz Software Engineering course.\
+### A fully documented project of Coinpanion - an app for personal budgeting being a part of the University of Lodz Software Engineering course.
 
 # Expenses Management System - Coinpanion
 
