@@ -1,6 +1,6 @@
 ### A fully documented project of Coinpanion - an app for personal budgeting being a part of the University of Lodz Software Engineering course.
 
-# Expenses Management System - Coinpanion
+# Coinpanion - personal budgeting system
 
 ## Overview
 
@@ -749,6 +749,8 @@ function deleteExpense($conn, $expenseId) {
 
 ### `Database Configuration:`
 
+![412402769_281393051585275_6459831302802139921_n](https://github.com/user-attachments/assets/0db6f988-3830-45c2-a1bc-3e2bc5b5b8bf)
+
 1. **Create a MySQL Database:**
    - Access your MySQL database server (e.g., using phpMyAdmin, MySQL Workbench, or command line).
    - Create a new database, for example, `ushosteu_wydatki`.
@@ -831,6 +833,6 @@ If you would like to contribute to this project:
 
 For support or questions:
 - Open an issue on the project's GitHub repository.
-- Contact the project maintainer via email (if available).
+- Contact the project maintainer via email (19pawel970415@gmail.com).
 
 Feel free to adjust or add additional sections as necessary!
