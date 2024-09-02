@@ -6,10 +6,6 @@
 
 ![416023103_389005050310286_5319686253198355794_n](https://github.com/user-attachments/assets/d53205fc-2b9b-4587-b357-1e81a63584b3)
 
-## User Guide
-
-![416023103_389005050310286_5319686253198355794_n](https://github.com/user-attachments/assets/d53205fc-2b9b-4587-b357-1e81a63584b3)
-
 ### 1. Registration:
 To start using Coinpanion, the first step is to create an account.
 On the homepage (index.html), click the "SIGN UP" button.
@@ -53,6 +49,8 @@ On this page, you can edit your account details. Fill out the fields and then cl
 
 ### 6. Reports (report.php)
 On this page, you have the option to generate reports based on your expenses. To do this, select the period for which the report should be generated. From the list of categories, check the ones you are interested in and click "Add to Report." If everything is correct, click "Generate Report." You will be redirected to the completed report.
+
+
 
 ## Technical Overview
 
