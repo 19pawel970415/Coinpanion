@@ -2,6 +2,8 @@
 
 # Coinpanion - personal budgeting system
 
+Authors: Paweł Żurawski, Dawid Kruszyński, Dawid Kudaj, Karol Kraska, Wiktoria Jęch
+
 ## User Guide
 
 ![416023103_389005050310286_5319686253198355794_n](https://github.com/user-attachments/assets/d53205fc-2b9b-4587-b357-1e81a63584b3)
