@@ -56,7 +56,9 @@ On this page, you have the option to generate reports based on your expenses. To
 
 This project is a simple expenses management system that includes user registration, login, profile management, and expenses tracking. Users can register, log in, update their profiles, generate expenses reports, and manage their expenses.
 
-## File Descriptions
+## Files Descriptions
+
+## .php files
 
 ### `process_registration.php`
 
@@ -792,6 +794,962 @@ function deleteExpense($conn, $expenseId) {
 
 - The function includes basic error handling to stop execution and output an error message if the prepared statement fails to initialize.
 - By using prepared statements with parameter binding, the function reduces the risk of SQL injection, ensuring secure interaction with the database.
+
+## .html files
+
+### index.html
+
+```html
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dołącz do Coinpanion</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 class="h1-welcome">Witaj w Coinpanion!</h1>
+    <p class="p-bio">
+        Coinpanion to innowacyjna aplikacja stworzona z myślą o tych, którzy pragną lepiej kontrolować swoje finanse. Niezależnie od tego, czy jesteś doświadczonym inwestorem, czy dopiero zaczynasz swoją podróż ku oszczędzaniu. Coinpanion dostarcza narzędzi, które sprawią, że zarządzanie budżetem stanie się łatwiejsze i bardziej efektywne.
+    </p>
+    <a href="login.html" class="button-primary go-to-login" style="  display: inline-block; width: 150px;margin: 0 10px; text-align: center;margin-bottom: 20px;">LOGIN</a>
+    <a href="registration.html" class="button-secondary go-to-registration" style="  display: inline-block;width: 150px;margin: 0 10px; text-align: center;margin-bottom: 20px;">SIGN UP</a>
+    <footer>Coinpanion©</footer>
+    
+</body>
+</html>
+```
+
+#### Detailed Explanation of the PHP/HTML Script
+
+##### PHP Session Initialization
+
+- `<?php session_start(); ?>` initiates a new session or resumes an existing session. This is used to manage user sessions across multiple pages.
+
+##### HTML Structure
+
+- The document is an HTML5 document with a `<!DOCTYPE html>` declaration, specifying that the content is written in HTML5.
+
+##### Document Metadata
+
+- `<meta charset="UTF-8">` specifies the character encoding for the document, ensuring proper display of characters.
+- `<meta name="viewport" content="width=device-width, initial-scale=1.0">` ensures the webpage is responsive and displays correctly on various devices by setting the viewport width to match the device's width.
+
+##### Page Title
+
+- `<title>Dołącz do Coinpanion</title>` sets the title of the page, which appears in the browser's title bar or tab.
+
+##### Stylesheet Linking
+
+- `<link rel="stylesheet" href="styles.css">` links to an external CSS file (`styles.css`) that contains styling rules for the page.
+
+##### Body Content
+
+- `<h1 class="h1-welcome">Witaj w Coinpanion!</h1>` displays a welcoming heading with a class `h1-welcome` for styling.
+- `<p class="p-bio">` contains a paragraph introducing Coinpanion, describing its purpose and benefits, with a class `p-bio` for styling.
+
+##### Navigation Links
+
+- `<a href="login.html" class="button-primary go-to-login" style="display: inline-block; width: 150px; margin: 0 10px; text-align: center; margin-bottom: 20px;">LOGIN</a>` creates a styled login button that directs users to `login.html`.
+- `<a href="registration.html" class="button-secondary go-to-registration" style="display: inline-block; width: 150px; margin: 0 10px; text-align: center; margin-bottom: 20px;">SIGN UP</a>` creates a styled registration button that directs users to `registration.html`.
+
+##### Footer
+
+- `<footer>Coinpanion©</footer>` adds a footer to the page, containing a copyright notice for Coinpanion.
+
+##### Additional Notes
+
+**Styling**
+
+- The page uses inline styles and classes from an external stylesheet (`styles.css`) to control the appearance of various elements, including buttons and text.
+
+**Responsive Design**
+
+- The use of the viewport meta tag helps ensure the page is responsive and looks good on mobile devices as well as desktops.
+
+**Session Management**
+
+- The PHP `session_start()` function is included to enable session management, allowing user information to be preserved across different pages within the same session.
+
+**Navigation**
+
+- The page provides clear navigation options for users to log in or sign up, guiding them to the appropriate pages for these actions.
+
+### registration.html
+
+```html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In Coinpanion</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form class="form-registration" method="post" action="process_registration.php">
+        <label class="form-login-label">IMIĘ</label><br>
+        <input type="text" class="reg-name login-input" name="imie" required><br>
+        <label class="form-login-label">NAZWISKO</label><br>
+        <input type="text" class="reg-surname login-input" name="nazwisko" required><br>
+        <label class="form-login-label">EMAIL</label><br>
+        <input type="email" class="reg-email login-input" name="email" required><br>
+        <label class="form-login-label">LOGIN</label><br>
+        <input type="text" class="profile-email login-input" name="login" required><br>
+        <label class="form-login-label">HASŁO</label><br>
+        <input type="password" class="reg-password login-input" name="haslo" required><br>
+        <label class="form-login-label">POWTÓRZ HASŁO</label><br>
+        <input type="password" class="reg-password2 login-input" name="haslo_powtorz" required><br>
+        <input type="submit" class="button-primary button-registration" value="ZAREJESTRUJ">
+    </form>
+    <footer>Coinpanion©</footer>
+</body>
+</html>
+```
+
+#### Detailed Explanation of the HTML Registration Form
+
+##### Document Metadata
+
+- `<!DOCTYPE html>` declares the document type and version of HTML, ensuring it is rendered in standards mode.
+- `<html lang="en">` specifies the language of the document as English.
+
+##### Metadata and Styles
+
+- `<meta charset="UTF-8">` sets the character encoding to UTF-8, which supports a wide range of characters.
+- `<meta name="viewport" content="width=device-width, initial-scale=1.0">` makes the page responsive by setting the viewport width to match the device width and scaling the page for optimal viewing.
+- `<title>Sign In Coinpanion</title>` sets the title of the page, which appears in the browser’s title bar or tab.
+- `<link rel="stylesheet" href="styles.css">` links to an external CSS file (`styles.css`) for styling the form and other elements.
+
+##### Form Structure
+
+- `<form class="form-registration" method="post" action="process_registration.php">` creates a form for user registration with the `POST` method, which sends form data securely to `process_registration.php`.
+
+##### Form Inputs
+
+- **Name Input**
+  - `<label class="form-login-label">IMIĘ</label><br>` labels the input field for the user's first name.
+  - `<input type="text" class="reg-name login-input" name="imie" required><br>` creates a text input field for the user's first name with a `required` attribute, meaning the field must be filled out.
+
+- **Surname Input**
+  - `<label class="form-login-label">NAZWISKO</label><br>` labels the input field for the user's surname.
+  - `<input type="text" class="reg-surname login-input" name="nazwisko" required><br>` creates a text input field for the user's surname with a `required` attribute.
+
+- **Email Input**
+  - `<label class="form-login-label">EMAIL</label><br>` labels the input field for the user's email address.
+  - `<input type="email" class="reg-email login-input" name="email" required><br>` creates an email input field, which validates the format of the email address, and is required.
+
+- **Login Input**
+  - `<label class="form-login-label">LOGIN</label><br>` labels the input field for the user's login username.
+  - `<input type="text" class="profile-email login-input" name="login" required><br>` creates a text input field for the user's login username with a `required` attribute.
+
+- **Password Input**
+  - `<label class="form-login-label">HASŁO</label><br>` labels the input field for the user's password.
+  - `<input type="password" class="reg-password login-input" name="haslo" required><br>` creates a password input field where the text is obscured and is required.
+
+- **Repeat Password Input**
+  - `<label class="form-login-label">POWTÓRZ HASŁO</label><br>` labels the input field for the user to confirm their password.
+  - `<input type="password" class="reg-password2 login-input" name="haslo_powtorz" required><br>` creates a second password input field for confirming the password, also with a `required` attribute.
+
+- **Submit Button**
+  - `<input type="submit" class="button-primary button-registration" value="ZAREJESTRUJ">` creates a submit button labeled "ZAREJESTRUJ" (Register). When clicked, it submits the form data to `process_registration.php`.
+
+##### Footer
+
+- `<footer>Coinpanion©</footer>` adds a footer with a copyright notice for Coinpanion.
+
+##### Additional Notes
+
+**Styling**
+
+- The page relies on an external stylesheet (`styles.css`) to style the form elements and layout.
+
+**Form Handling**
+
+- The form data is sent via `POST` to `process_registration.php`, which is expected to handle user registration by processing the input data.
+
+**Validation**
+
+- The `required` attribute is used on all form fields to ensure that users cannot submit the form with missing information.
+
+**Responsive Design**
+
+- The inclusion of the viewport meta tag ensures that the form is displayed correctly on various devices, adapting to different screen sizes.
+
+**Security Considerations**
+
+- Ensure that `process_registration.php` properly handles and sanitizes the form data to prevent security issues such as SQL injection and XSS.
+
+### welcome.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dziękujemy za dołączenie do nas.</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h3 class="h3-successful">Rejestracja przebiegła pomyślnie!</h3>
+    <p class="p-successful">
+        Dziękujemy za dołączenie do społeczności Coinpanion - Twojego nowego partnera w zarządzaniu finansami! Jesteśmy podekscytowani, że jesteś z nami.<br>
+        Teraz możesz śledzić swoje wydatki, planować cele oszczędnościowe i zyskać pełną kontrolę nad swoim budżetem. Zacznij już teraz, dodając swoje konta i ciesz się funkcjonalnościami, które ułatwią Ci życie finansowe.
+        Jeśli masz jakiekolwiek pytania lub potrzebujesz pomocy, nie wahaj się skontaktować z nami. Życzymy udanej podróży ku finansowej niezależności!<br>
+        Pozdrawiamy, <BR>Zespół Coinpanion
+    </p>
+    <a href="index.html" class="button-primary go-to-main">STRONA GŁÓWNA</a>
+    <footer>Coinpanion©</footer>
+</body>
+</html>
+```
+
+#### Detailed Explanation of the HTML Success Page
+
+##### Document Metadata
+
+- `<!DOCTYPE html>` declares the document type and version of HTML, ensuring the page is rendered in standards mode.
+- `<html lang="en">` specifies that the document is in English.
+
+##### Metadata and Styles
+
+- `<meta charset="UTF-8">` sets the character encoding to UTF-8, supporting a wide range of characters and ensuring proper text display.
+- `<meta name="viewport" content="width=device-width, initial-scale=1.0">` ensures the page is responsive, adjusting its layout to the device's width and scaling it for optimal viewing.
+- `<title>Dziękujemy za dołączenie do nas.</title>` sets the page title to "Thank You for Joining Us," which appears in the browser's title bar or tab.
+- `<link rel="stylesheet" href="styles.css">` links to an external CSS file (`styles.css`) for styling the page elements.
+
+##### Body Content
+
+- `<h3 class="h3-successful">Rejestracja przebiegła pomyślnie!</h3>` displays a heading indicating a successful registration with a class `h3-successful` for styling.
+
+- `<p class="p-successful">` contains a paragraph with a class `p-successful`, providing a detailed success message to the user:
+  - **Greeting and Welcome Message**: Thanks the user for joining Coinpanion and expresses excitement about their participation.
+  - **Usage Instructions**: Encourages users to start tracking their expenses, planning savings goals, and adding accounts to make the most of the financial management tools provided.
+  - **Support Offer**: Invites users to contact support if they have questions or need help.
+  - **Closing**: Ends with best wishes for financial independence and a sign-off from the Coinpanion team.
+
+- `<a href="index.html" class="button-primary go-to-main">STRONA GŁÓWNA</a>` creates a button labeled "STRONA GŁÓWNA" (Homepage) that redirects users to the homepage (`index.html`). The button uses the class `button-primary` for styling.
+
+##### Footer
+
+- `<footer>Coinpanion©</footer>` includes a footer with a copyright notice for Coinpanion.
+
+##### Additional Notes
+
+**Styling**
+
+- The page uses an external stylesheet (`styles.css`) to manage the look and feel of the success message and button.
+
+**Responsiveness**
+
+- The viewport meta tag ensures the page is displayed correctly on various devices, adapting to different screen sizes.
+
+**User Experience**
+
+- The page provides a clear and welcoming confirmation message following a successful registration, enhancing the user's experience and guiding them to the next steps.
+
+**Navigation**
+
+- The button provided offers an easy way for users to return to the homepage, ensuring smooth navigation after completing the registration process.
+
+### login.html
+
+```html
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Coinpanion</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form class="form-login" method="post" action="process_login.php">
+        <label class="form-login-label">LOGIN</label><br>
+        <input type="text" class="login-user login-input" name="login" required><br>
+        <label class="form-login-label">HASŁO</label><br>
+        <input type="password" class="login-password login-input" name="haslo" required><br>
+        <input type="submit" class="button-primary button-login" value="ZALOGUJ">
+        <input type="hidden" name="action" value="login">
+    </form>
+    <footer>Coinpanion©</footer>
+</body>
+</html>
+```
+
+#### Detailed Explanation of the PHP/HTML Login Form
+
+##### PHP Session Initialization
+
+- `<?php session_start(); ?>` initiates a new session or resumes an existing session, which allows for session management across multiple pages.
+
+##### Document Metadata
+
+- `<!DOCTYPE html>` specifies that the document is an HTML5 document, ensuring it is rendered in standards mode.
+- `<html lang="en">` declares the language of the document as English.
+
+##### Metadata and Styles
+
+- `<meta charset="UTF-8">` sets the character encoding to UTF-8, which supports a wide range of characters and ensures proper text display.
+- `<meta name="viewport" content="width=device-width, initial-scale=1.0">` makes the page responsive by setting the viewport width to match the device width and scaling the content for optimal viewing.
+- `<title>Login Coinpanion</title>` sets the title of the page, which appears in the browser’s title bar or tab.
+- `<link rel="stylesheet" href="styles.css">` links to an external CSS file (`styles.css`) that provides styling for the page elements.
+
+##### Body Content
+
+- `<form class="form-login" method="post" action="process_login.php">` creates a form for user login, using the `POST` method to send data securely to `process_login.php`.
+
+##### Form Inputs
+
+- **Login Input**
+  - `<label class="form-login-label">LOGIN</label><br>` labels the input field for the user’s login username.
+  - `<input type="text" class="login-user login-input" name="login" required><br>` creates a text input field for the username, marked as `required` to ensure it must be filled out.
+
+- **Password Input**
+  - `<label class="form-login-label">HASŁO</label><br>` labels the input field for the user’s password.
+  - `<input type="password" class="login-password login-input" name="haslo" required><br>` creates a password input field where the text is obscured and is required for form submission.
+
+- **Submit Button**
+  - `<input type="submit" class="button-primary button-login" value="ZALOGUJ">` creates a submit button labeled "ZALOGUJ" (Log In). When clicked, it submits the form data to `process_login.php`.
+
+- **Hidden Input**
+  - `<input type="hidden" name="action" value="login">` includes a hidden field with the name `action` and value `login`. This can be used to differentiate between different form submissions or actions in `process_login.php`.
+
+##### Footer
+
+- `<footer>Coinpanion©</footer>` adds a footer to the page with a copyright notice for Coinpanion.
+
+##### Additional Notes
+
+**Styling**
+
+- The page utilizes an external stylesheet (`styles.css`) to apply styles to the form and its elements, ensuring a consistent appearance.
+
+**Form Handling**
+
+- The form data is submitted via `POST` to `process_login.php`, which is expected to handle the authentication process.
+
+**Validation**
+
+- The `required` attribute on the input fields ensures that the user cannot submit the form without providing both a username and password.
+
+**Session Management**
+
+- The PHP `session_start()` function is used to manage user sessions, allowing for tracking and maintaining user information across different pages.
+
+**Security Considerations**
+
+- Ensure that `process_login.php` securely handles login credentials and properly manages user authentication to protect against security vulnerabilities.
+
+## .css files
+
+### styles.css
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+body#spending-page {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 0;
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  text-align: left;
+}
+
+
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+/* Main */
+main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Nagłówki */
+h1, h2, h3, h4, h5, h6 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.h1-welcome {
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.h3-successful {
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+/* Paragrafy */
+p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.p-bio {
+  margin: 0 auto 20px;
+  max-width: 600px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.p-successful {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Linki */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Nagłówek witamy */
+.h1-welcome {
+  color: #007bff;
+}
+
+.button-primary,
+.button-secondary {
+  display: inline-block;
+  width: 150px;
+  margin: 0 10px;
+  text-align: center;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.button-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.button-secondary {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.button-primary:hover,
+.button-secondary:hover {
+  background-color: #0056b3;
+}
+
+/* Formularze */
+.form-login, .form-registration, .form-profile {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.login-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-login {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.form-profile {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-login-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.form-registration {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button-primary {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.button-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Div Spending 1 */
+.div-spending1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filtr-input {
+  margin-left: 20px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+}
+
+.button-spending {
+  margin-right: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-spending:hover {
+  background-color: #0056b3;
+}
+
+/* Div Spending 2 */
+.div-spending2 {
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.table-spending {
+  width: 70%;
+  border-collapse: collapse;
+  margin-right: 20px;
+}
+
+.table-spending th,
+.table-spending td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.table-spending th {
+  background-color: #f0f0f0;
+}
+
+/* Aside */
+aside {
+  width: 25%;
+}
+
+/* Div Spending 3 */
+.div-spending3 {
+  width: 80%;
+}
+
+.table-categories {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-categories th,
+.table-categories td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.table-categories th {
+  background-color: #f0f0f0;
+}
+
+.div-raport1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  border-bottom: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.form-raport {
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+}
+
+.raport-date-start,
+.raport-date-end {
+  padding: 12px;
+  margin-right: 20px; 
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+input[type="submit"] {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+input[type="date"],
+.category-select,
+input[type="submit"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.button-generate {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+/* Stopka */
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #007bff;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Menu główne */
+.main-menu {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.menu-element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  padding: 40px; 
+  border-radius: 20px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; 
+}
+.menu-element img {
+  width: 100px; 
+  height: 100px;
+}
+.menu-element:hover {
+  transform: scale(1.05);
+}
+
+.menu-element div {
+  margin-bottom: 15px;
+}
+
+.menu-element span {
+  font-size: 18px; 
+  font-weight: bold;
+}
+
+/* Elementy wydatków */
+.div-spending1, .div-spending2, .div-spending3 {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.table-spending {
+  width: 100%;
+}
+
+.table-categories {
+  width: 100%;
+}
+
+/* Elementy raportów */
+.div-raport1 {
+  padding: 10px;
+}
+```
+
+#### Detailed Explanation of the CSS File
+
+##### Global Styles
+
+- `* { margin: 0; padding: 0; box-sizing: border-box; }` 
+  - Resets margins and paddings to zero and sets `box-sizing` to `border-box` for all elements, ensuring consistent box model behavior across the site.
+
+##### Body
+
+- `body { font-family: Arial, sans-serif; background-color: #f0f0f0; color: #333; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; text-align: center; padding: 20px; }`
+  - Sets the global font to Arial, with a light grey background and dark text color.
+  - Uses Flexbox to center content vertically and horizontally.
+  - Ensures the body takes at least the full height of the viewport.
+
+- `body#spending-page { font-family: Arial, sans-serif; background-color: #f5f5f5; color: #333; padding: 0; display: block; margin: 0 auto; width: 80%; text-align: left; }`
+  - Specific styles for the `spending-page` ID.
+  - Changes background to a slightly different grey, adjusts width, and aligns text to the left.
+
+##### Header
+
+- `header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; margin-top: 10px; }`
+  - Uses Flexbox to arrange header items with space between them.
+  - Adds vertical margin.
+
+##### Main
+
+- `main { display: flex; justify-content: space-between; align-items: flex-start; }`
+  - Uses Flexbox to layout main content with space between items and aligns items to the start.
+
+##### Headings
+
+- `h1, h2, h3, h4, h5, h6 { color: #333; margin-bottom: 10px; }`
+  - Sets the color of all headings to dark grey and adds margin below.
+
+- `.h1-welcome { color: #007bff; margin-bottom: 20px; }`
+  - Specific styling for welcome headings (`h1`), setting color to a blue shade and increasing bottom margin.
+
+- `.h3-successful { color: #007bff; margin-bottom: 20px; }`
+  - Specific styling for successful operation messages (`h3`), similar to welcome headings.
+
+##### Paragraphs
+
+- `p { line-height: 1.6; margin-bottom: 15px; }`
+  - Sets line height for paragraphs for better readability and adds margin below.
+
+- `.p-bio { margin: 0 auto 20px; max-width: 600px; font-size: 18px; line-height: 1.6; }`
+  - Specific styling for bio paragraphs, including maximum width and font size.
+
+- `.p-successful { margin-bottom: 20px; font-size: 16px; line-height: 1.6; }`
+  - Specific styling for success messages, with adjusted font size.
+
+##### Links
+
+- `a { color: #007bff; text-decoration: none; }`
+  - Sets link color to blue and removes underline.
+
+- `a:hover { text-decoration: underline; }`
+  - Underlines links on hover.
+
+##### Buttons
+
+- `.button-primary, .button-secondary { display: inline-block; width: 150px; margin: 0 10px; text-align: center; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; }`
+  - Defines common button styles including dimensions, padding, and cursor type.
+
+- `.button-primary { background-color: #007bff; color: #fff; }`
+  - Primary button styling with blue background and white text.
+
+- `.button-secondary { background-color: #28a745; color: #fff; }`
+  - Secondary button styling with green background and white text.
+
+- `.button-primary:hover, .button-secondary:hover { background-color: #0056b3; }`
+  - Darkens button background on hover.
+
+##### Forms
+
+- `.form-login, .form-registration, .form-profile { max-width: 300px; margin: 0 auto; }`
+  - Sets a maximum width for form containers and centers them.
+
+- `.login-input { width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; }`
+  - Styles form input fields with padding, border, and rounded corners.
+
+- `.form-login { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center; }`
+  - Styles login forms with background color, padding, border radius, and shadow.
+
+- `.form-profile { max-width: 400px; margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }`
+  - Styles profile forms with larger maximum width and subtle shadow.
+
+- `.form-login-label { font-weight: bold; display: block; margin-bottom: 5px; text-align: left; }`
+  - Styles form labels with bold text and left alignment.
+
+- `.form-registration { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center; width: 300px; }`
+  - Styles registration forms similarly to login forms but with a specific width.
+
+##### Spending Sections
+
+- `.div-spending1 { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }`
+  - Centers content and adds margin below for the spending section.
+
+- `.filtr-input { margin-left: 20px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 200px; }`
+  - Styles filter input fields with padding and border radius.
+
+- `.button-spending { margin-right: 20px; padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease; }`
+  - Styles spending buttons with blue background, white text, and hover effect.
+
+- `.div-spending2 { width: 80%; margin-bottom: 20px; }`
+  - Sets width for spending section 2 and adds margin below.
+
+- `.table-spending { width: 70%; border-collapse: collapse; margin-right: 20px; }`
+  - Styles tables in the spending section with borders and spacing.
+
+- `.table-spending th, .table-spending td { border: 1px solid #ccc; padding: 8px; text-align: center; }`
+  - Styles table cells with borders and padding.
+
+- `.table-spending th { background-color: #f0f0f0; }`
+  - Sets background color for table headers.
+
+##### Aside
+
+- `aside { width: 25%; }`
+  - Sets width for aside elements.
+
+##### Spending Section 3
+
+- `.div-spending3 { width: 80%; }`
+  - Sets width for the third spending section.
+
+- `.table-categories { width: 100%; border-collapse: collapse; }`
+  - Styles tables in the categories section with full width.
+
+- `.table-categories th, .table-categories td { border: 1px solid #ccc; padding: 8px; text-align: center; }`
+  - Styles table cells in the categories section similarly to spending tables.
+
+- `.div-raport1 { display: flex; justify-content: space-between; align-items: center; padding: 40px; border-bottom: 1px solid #ccc; background-color: #f9f9f9; }`
+  - Styles report section with Flexbox, padding, border, and background color.
+
+- `.form-raport { display: flex; align-items: center; gap: 20px; }`
+  - Styles report forms with Flexbox and spacing between elements.
+
+- `.raport-date-start, .raport-date-end { padding: 12px; margin-right: 20px; border: 1px solid #ccc; border-radius: 6px; }`
+  - Styles date input fields with padding, margin, border, and border radius.
+
+- `input[type="submit"] { padding: 12px 24px; border: none; border-radius: 6px; background-color: #007bff; color: white; cursor: pointer; }`
+  - Styles submit buttons with padding, border radius, and blue background.
+
+- `input[type="date"], .category-select, input[type="submit"] { padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }`
+  - Styles date inputs and select elements with padding, border, and font size.
+
+- `select { padding: 12px; border: 1px solid #ccc; border-radius: 6px; }`
+  - Styles dropdown select elements similarly to other inputs.
+
+- `.button-generate { position: absolute; top: 30px; right: 30px; padding: 14px 28px; border: none; border-radius: 6px; background-color: #007bff; color: white; cursor: pointer; }`
+  - Styles a generate button with absolute positioning and blue background.
+
+##### Footer
+
+- `footer { text-align: center; padding: 10px 0; background-color: #007bff; color: #fff; position: fixed; bottom: 0; width: 100%; }`
+  - Styles the footer with centered text, padding, blue background, and fixed positioning at the bottom.
+
+##### Main Menu
+
+- `.main-menu { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 40px; }`
+  - Uses a grid layout for the main menu with two columns and a gap between items.
+
+- `.menu-element { display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; }`
+  - Styles individual menu elements with Flexbox, background color, padding, rounded corners, shadow, and a transition effect.
+
+- `.menu-element img { width: 100px; height: 100px; }`
+  - Sets fixed dimensions for menu images.
+
+- `.menu-element:hover { transform: scale(1.05); }`
+  - Adds a scaling effect on hover for menu elements.
+
+- `.menu-element div { margin-bottom: 15px; }`
+  - Adds bottom margin to div elements within menu elements.
+
+- `.menu-element span { font-size: 18px; font-weight: bold; }`
+  - Styles text within menu elements with larger font size and bold weight.
+
+##### Spending Elements
+
+- `.div-spending1, .div-spending2, .div-spending3 { margin-bottom: 20px; padding: 10px; }`
+  - Adds margin and padding to various spending sections.
+
+- `.table-spending, .table-categories { width: 100%; }`
+  - Ensures tables in spending and categories sections span the full width of their containers.
+
+##### Report Elements
+
+- `.div-raport1 { padding: 10px; }`
+  - Adds padding to the report section.
+
+This CSS file provides a comprehensive set of styles for a web application, covering layout, typography, form elements, buttons, and more. It ensures a consistent look and feel across different components and pages, improving user experience and accessibility.
+
 
 # Project Setup Guide
 
