@@ -1,4 +1,4 @@
-### A project of Coinpanion, an app for personal budgeting being a part of the University of Lodz Software Engineering course
+### A project of Coinpanion, an app for personal budgeting being a part of the University of Lodz Software Engineering course.
 
 # Coinpanion - personal budgeting system
 
